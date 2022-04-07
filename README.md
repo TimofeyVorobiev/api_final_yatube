@@ -35,7 +35,6 @@ python manage.py migrate
 Запустить проект:
 python manage.py runserver
 ```
-```
 ### Примеры
 #### Что можно запустить и проверить в проекте:
 ```
