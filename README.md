@@ -48,7 +48,6 @@ python manage.py runserver
 по адресу - /api/v1/posts/:
 ```
 запросом GET - получить список всех постов
-```
 запросом POST - добавить свой пост
 ```
 по адресу - api/v1/posts/{post_id}/comments/:
