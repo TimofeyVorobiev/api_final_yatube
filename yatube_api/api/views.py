@@ -5,7 +5,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .mixins import FollowCreateListRetrieve
+from .mixins import FollowCreateListSet
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (PostSerializer, GroupSerializer,
                           CommentSerializer, FollowSerializer
@@ -28,7 +28,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
-class FollowViewSet(FollowCreateListRetrieve):
+class FollowViewSet(FollowCreateListSet):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
