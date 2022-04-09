@@ -1,13 +1,15 @@
-from rest_framework.generics import get_object_or_404
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.pagination import LimitOffsetPagination
+from posts.models import Post, Group, Comment, Follow
 from rest_framework import filters
+from rest_framework import viewsets
+from rest_framework.generics import get_object_or_404
+from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+from .mixins import FollowCreateListRetrieve
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (PostSerializer, GroupSerializer,
                           CommentSerializer, FollowSerializer
                           )
-from posts.models import Post, Group, Comment, Follow
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -26,7 +28,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
-class FollowViewSet(viewsets.ModelViewSet):
+class FollowViewSet(FollowCreateListRetrieve):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
