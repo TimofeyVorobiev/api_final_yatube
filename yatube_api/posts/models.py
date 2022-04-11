@@ -31,7 +31,7 @@ class Post(models.Model):
         upload_to='posts/', null=True, blank=True)
 
     def __str__(self):
-        return self.text
+        return self.author
 
 
 class Comment(models.Model):
@@ -44,7 +44,7 @@ class Comment(models.Model):
         'Дата добавления', auto_now_add=True, db_index=True)
 
     def __str__(self):
-        return self.author, self.post, self.text, self.created
+        return self.text
 
 
 class Follow(models.Model):
@@ -67,8 +67,12 @@ class Follow(models.Model):
             models.UniqueConstraint(
                 fields=['user', 'following'],
                 name='unique_name_user_following'
+            ),
+            models.CheckConstraint(
+                name="user_is_not_following",
+                check=~models.Q(user=models.F("following"))
             )
         ]
 
     def __str__(self):
-        return self.user, self.following
+        return self.following

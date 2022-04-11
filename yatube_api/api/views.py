@@ -1,15 +1,16 @@
-from posts.models import Post, Group, Comment, Follow
-from rest_framework import filters
-from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
-from rest_framework.pagination import LimitOffsetPagination
+from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.pagination import LimitOffsetPagination
+from rest_framework import filters
 
 from .mixins import FollowCreateListSet
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (PostSerializer, GroupSerializer,
                           CommentSerializer, FollowSerializer
                           )
+
+from posts.models import Post, Group, Comment, Follow
 
 
 class PostViewSet(viewsets.ModelViewSet):
