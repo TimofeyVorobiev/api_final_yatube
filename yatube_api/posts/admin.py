@@ -9,6 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('pub_date',)
     empty_value_display = '-пусто-'
 
+
 class FollowAdmin(admin.ModelAdmin):
     list_display = ('pk', 'user', 'following')
     list_filter = ('user', 'following',)
