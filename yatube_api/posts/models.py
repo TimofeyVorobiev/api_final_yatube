@@ -44,7 +44,8 @@ class Comment(models.Model):
         'Дата добавления', auto_now_add=True, db_index=True)
 
     def __str__(self):
-        return f'{self.author}, {self.text} , {self.post.id}'
+        return f'Автор комментария: {self.author}, Текст комментария: {self.text}' \
+               f' , Номер поста: {self.post.id}'
 
 
 class Follow(models.Model):
