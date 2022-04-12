@@ -9,7 +9,6 @@ from .permissions import IsAuthorOrReadOnly
 from .serializers import (PostSerializer, GroupSerializer,
                           CommentSerializer, FollowSerializer
                           )
-
 from posts.models import Post, Group, Comment, Follow
 
 
