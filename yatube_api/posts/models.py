@@ -10,7 +10,7 @@ class Group(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return (self.title, self.slug, self.description)
+        return f'{self.title}, {self.slug}, {self.description}'
 
 
 class Post(models.Model):
@@ -31,7 +31,7 @@ class Post(models.Model):
         upload_to='posts/', null=True, blank=True)
 
     def __str__(self):
-        return (self.text, self.pub_date, self.author, self.group)
+        return f'{self.text}, {self.pub_date}, {self.author}, {self.group}'
 
 
 class Comment(models.Model):
@@ -44,7 +44,7 @@ class Comment(models.Model):
         'Дата добавления', auto_now_add=True, db_index=True)
 
     def __str__(self):
-        return (self.author, self.post, self.text, self.created)
+        return f'{self.author}, {self.text} , {self.post.id}'
 
 
 class Follow(models.Model):
@@ -75,4 +75,4 @@ class Follow(models.Model):
         ]
 
     def __str__(self):
-        return (self.user, self.following)
+        return f'{self.user}, {self.following}'
